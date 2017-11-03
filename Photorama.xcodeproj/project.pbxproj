@@ -14,6 +14,7 @@
 		B79C87391FAC552300B057FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B79C87371FAC552300B057FA /* LaunchScreen.storyboard */; };
 		B79C87441FAC552300B057FA /* PhotoramaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79C87431FAC552300B057FA /* PhotoramaTests.swift */; };
 		B79C874F1FAC552300B057FA /* PhotoramaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79C874E1FAC552300B057FA /* PhotoramaUITests.swift */; };
+		B7B5D72A1FAC5D2100860C0E /* FlickrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B5D7291FAC5D2100860C0E /* FlickrAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		B79C874A1FAC552300B057FA /* PhotoramaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoramaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B79C874E1FAC552300B057FA /* PhotoramaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoramaUITests.swift; sourceTree = "<group>"; };
 		B79C87501FAC552300B057FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7B5D7291FAC5D2100860C0E /* FlickrAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				B79C87351FAC552300B057FA /* Assets.xcassets */,
 				B79C87371FAC552300B057FA /* LaunchScreen.storyboard */,
 				B79C873A1FAC552300B057FA /* Info.plist */,
+				B7B5D7291FAC5D2100860C0E /* FlickrAPI.swift */,
 			);
 			path = Photorama;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7B5D72A1FAC5D2100860C0E /* FlickrAPI.swift in Sources */,
 				B79C87311FAC552300B057FA /* ViewController.swift in Sources */,
 				B79C872F1FAC552300B057FA /* AppDelegate.swift in Sources */,
 			);
@@ -427,10 +431,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 49T2S8SJWE;
+				DEVELOPMENT_TEAM = F94MFTWE9Q;
 				INFOPLIST_FILE = Photorama/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nguyen.phuc.khanh.Photorama;
+				PRODUCT_BUNDLE_IDENTIFIER = khanhnguyen.joy.Photorama;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -442,10 +447,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 49T2S8SJWE;
+				DEVELOPMENT_TEAM = F94MFTWE9Q;
 				INFOPLIST_FILE = Photorama/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nguyen.phuc.khanh.Photorama;
+				PRODUCT_BUNDLE_IDENTIFIER = khanhnguyen.joy.Photorama;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
