@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PhotosViewController.swift
 //  Photorama
 //
 //  Created by nguyen.phuc.khanh on 11/3/17.
@@ -8,11 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class PhotosViewController: UIViewController {
 
+    @IBOutlet var imageView: UIImageView!
+    var store: PhotoStore!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        store.fetchInterestingPhotos()
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +24,4 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
 }
-
