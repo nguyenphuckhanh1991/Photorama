@@ -52,7 +52,14 @@ class PhotoStore {
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
            
-        let result = self.processPhotosRequest(data: data, error: error)
+        var result = self.processPhotosRequest(data: data, error: error)
+            if case .success = result {
+                do {
+                    try self.persistentContainer.viewContext.save()
+                } catch let error {
+                    result = .failure(error)
+                }
+            }
             OperationQueue.main.addOperation {
                 completion(result)
             }
@@ -65,7 +72,7 @@ class PhotoStore {
         guard let jsonData = data else {
             return .failure(error!)
         }
-        return FlickrAPI.photos(fromJSON: jsonData)
+        return FlickrAPI.photos(fromJSON: jsonData, into: persistentContainer.viewContext)
     }
     
     func fetchImage(for photo: Photo, completion: @escaping (ImageResult) -> Void) {
