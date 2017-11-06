@@ -8,32 +8,58 @@
 
 import UIKit
 
+enum ImageResult {
+    case success(UIImage)
+    case failure(Error)
+}
+
+enum PhotoError: Error {
+    case imageCreationError
+}
+
+enum PhotoResult {
+    case success([Photo])
+    case failure(Error)
+}
+
 class PhotoStore {
     
+    // An instance of URLSession
     private let session: URLSession = {
         let config = URLSessionConfiguration.default
         return URLSession(configuration: config)
     }()
     
-    func fetchInterestingPhotos() {
+    // Use URLSession to create a URLSessionDataTask that transfers this request to the server.
+    func fetchInterestingPhotos(completion: @escaping (PhotoResult) -> Void) {
+        //Create a URL instance using the FlickrAPI struct and instantiate a request object with it
         let url = FlickrAPI.interestingPhotosURL
         let request = URLRequest(url: url)
         
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
            
-            if let jsonData = data {
-                do {
-                    let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: [])
-                    print(jsonObject)
-                } catch let error {
-                    print("Error creating JSON object: \(error)")
-                }
-            } else if let requestError = error {
-                print("Error fetching interesting photos: \(requestError)")
-            } else {
-                print("Unexpected error with the request")
-            }
+        let result = self.processPhotosRequest(data: data, error: error)
+        completion(result)
+        }
+        task.resume()
+    }
+    
+    // Method that will process the JSON data that is returned from the web service request.
+    private func processPhotosRequest(data: Data?, error: Error?) -> PhotoResult {
+        guard let jsonData = data else {
+            return .failure(error!)
+        }
+        return FlickrAPI.photos(fromJSON: jsonData)
+    }
+    
+    func fetchImage(for photo: Photo, completion: @escaping (ImageResult) -> Void) {
+        
+        let photoURL = photo.remoteURL
+        let request = URLRequest(url: photoURL)
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            
         }
         task.resume()
     }

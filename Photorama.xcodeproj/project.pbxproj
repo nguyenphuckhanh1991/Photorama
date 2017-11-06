@@ -103,14 +103,12 @@
 		B79C872D1FAC552300B057FA /* Photorama */ = {
 			isa = PBXGroup;
 			children = (
-				B7B5D7331FAC797700860C0E /* Controllers */,
-				B7B5D7301FAC785200860C0E /* FlickrApi */,
-				B7B5D72F1FAC784800860C0E /* Model */,
 				B79C872E1FAC552300B057FA /* AppDelegate.swift */,
-				B79C87321FAC552300B057FA /* Main.storyboard */,
-				B79C87351FAC552300B057FA /* Assets.xcassets */,
-				B79C87371FAC552300B057FA /* LaunchScreen.storyboard */,
+				B7B5D7301FAC785200860C0E /* FlickrApi */,
+				B7B5D7331FAC797700860C0E /* Controllers */,
+				B7B5D72F1FAC784800860C0E /* Model */,
 				B79C873A1FAC552300B057FA /* Info.plist */,
+				B79C87351FAC552300B057FA /* Assets.xcassets */,
 			);
 			path = Photorama;
 			sourceTree = "<group>";
@@ -154,6 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				B7B5D72D1FAC77A900860C0E /* PhotosViewController.swift */,
+				B79C87321FAC552300B057FA /* Main.storyboard */,
+				B79C87371FAC552300B057FA /* LaunchScreen.storyboard */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
