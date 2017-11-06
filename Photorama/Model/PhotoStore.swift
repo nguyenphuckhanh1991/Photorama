@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 enum ImageResult {
     case success(UIImage)
@@ -25,6 +26,16 @@ enum PhotoResult {
 class PhotoStore {
     
     let imageStore = ImageStore()
+    
+    let persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "Photorama")
+        container.loadPersistentStores { (description, error) in
+            if let error = error {
+                print("Error setting up Core Data (\(error)).")
+            }
+        }
+        return container
+    }()
     
     // An instance of URLSession
     private let session: URLSession = {
@@ -58,16 +69,19 @@ class PhotoStore {
     }
     
     func fetchImage(for photo: Photo, completion: @escaping (ImageResult) -> Void) {
-        let photoKey = photo.photoID
-        
-        if let image = imageStore.image(forKey: photoKey) {
-            OperationQueue.main.addOperation {
-                completion(.success(image))
-            }
-            return
-        }
-        let photoURL = photo.remoteURL
-        let request = URLRequest(url: photoURL)
+    guard let photoKey = photo.photoID else {
+    preconditionFailure("Photo expected to have a photoID.")
+    }
+    if let image = imageStore.image(forKey: photoKey) {
+    OperationQueue.main.addOperation {
+    completion(.success(image))
+    }
+    return
+    }
+    guard let photoURL = photo.remoteURL else {
+    preconditionFailure("Photo expected to have a remote URL.")
+    }
+        let request = URLRequest(url: photoURL as! URL)
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
             let result = self.processImageRequest(data: data, error: error)
