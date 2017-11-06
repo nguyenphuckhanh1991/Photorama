@@ -93,7 +93,6 @@ struct FlickrAPI {
     }
     
     // MARK: parse a JSON dictionary into a Photo instance
-    
     private static func photo(fromJSON json: [String: Any]) -> Photo? {
         guard
             let photoID = json["id"] as? String,
